@@ -14,8 +14,11 @@ install-prod:
 	sudo docker container exec library_app python manage.py migrate
 	sudo docker container exec library_app python manage.py createsuperuser --noinput
 
-run:
-	sudo docker-compose up -d
+run-dev:
+	sudo docker-compose -f docker-compose.dev.yml up -d
+
+run-prod:
+	sudo docker-compose -f docker-compose.prod.yml up -d
 
 stop:
 	sudo docker-compose stop
