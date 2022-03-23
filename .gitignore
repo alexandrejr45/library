@@ -1,0 +1,4 @@
+venv
+.idea
+app/.pytest_cache/
+.pytest_cache
