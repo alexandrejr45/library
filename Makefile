@@ -4,6 +4,7 @@ install-dev:
 	sudo docker-compose -f docker-compose.dev.yml build
 	sudo docker-compose -f docker-compose.dev.yml up -d
 	sleep 4
+	sudo docker container exec library_app python manage.py makemigrations
 	sudo docker container exec library_app python manage.py migrate
 	sudo docker container exec library_app python manage.py createsuperuser --noinput
 
@@ -19,6 +20,10 @@ run-dev:
 
 run-prod:
 	sudo docker-compose -f docker-compose.prod.yml up -d
+
+run-migrations:
+	sudo docker container exec library_app python manage.py makemigrations
+	sudo docker container exec library_app python manage.py migrate
 
 stop:
 	sudo docker-compose stop
