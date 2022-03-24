@@ -27,7 +27,7 @@ show-urls:
 	sudo docker container exec library_app python manage.py show_urls
 
 tests:
-	sudo docker container exec library_app pytest core/tests.py
+	sudo docker container exec library_app pytest library/core/tests.py
 
 logs:
 	sudo docker container logs -f library_app
