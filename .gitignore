@@ -3,4 +3,4 @@ app/.pytest_cache/
 .pytest_cache
 .env.*
 .env
-app/library/__pycache__
+app/library/core/__pycache__

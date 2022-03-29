@@ -31,8 +31,13 @@ stop:
 show-urls:
 	sudo docker container exec library_app python manage.py show_urls
 
+flake8:
+	@flake8 app/ --ignore D203 \
+         --exclude app/library/settings.py,app/library/wsgi.py,app/library/core/migrations \
+         --max-complexity 10
+
 tests:
-	sudo docker container exec library_app pytest library/core/tests.py
+	sudo docker container exec library_app pytest library/core/tests/
 
 logs:
 	sudo docker container logs -f library_app
