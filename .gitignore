@@ -1,6 +1,5 @@
 .idea
-app/.pytest_cache/
-.pytest_cache
+.pytest_cache/
 .env.*
 .env
-app/library/core/__pycache__
+*/__pycache__

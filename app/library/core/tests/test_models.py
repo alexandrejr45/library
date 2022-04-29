@@ -35,9 +35,9 @@ class TestAuthor:
                     'elit. Sed id molestie dolor. Sed placerat sagittis mi,'
                     'lobortis rutrum augue bibendum ac. Nulla ac fermentum'
                     'urna. Nulla sed turpis ultricies, sollicitudin mi eu,'
-                    'convallis ante. Proin ullamcorper enim eu est cras.'
-                )
+                'convallis ante. Proin ullamcorper enim eu est cras.'
             )
+        )
 
     def test_should_create_author_without_last_name(self):
         Author.objects.create(name='Promoter')
@@ -65,7 +65,7 @@ class TestBook:
         assert book.authors.get(name='Amaral') == author_model
 
     def test_should_raise_error_when_book_have_invalid_isbn(
-        self, 
+        self,
         author_model
     ):
         with(pytest.raises(IntegrityError)):

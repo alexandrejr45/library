@@ -1,4 +1,7 @@
+import uuid
+
 import pytest
+from datetime import date
 from library.core.models import Author
 
 
@@ -27,4 +30,26 @@ def author_payload_invalid():
             'urna. Nulla sed turpis ultricies, sollicitudin mi eu,'
             'convallis ante. Proin ullamcorper enim eu est cras.'
         )
+    }
+
+
+@pytest.fixture
+def book_payload_valid(author_model):
+    return {
+        'name': 'The best book ever',
+        'edition': '1st forever',
+        'publication_year': date.today(),
+        'isbn': str(uuid.uuid4()),
+        'authors': [author_model.pk]
+    }
+
+
+@pytest.fixture
+def book_payload_invalid():
+    return {
+        'name': 'The best book ever',
+        'edition': '1st forever',
+        'publication_year': date.today(),
+        'isbn': str(uuid.uuid4()),
+        'authors': 1
     }
