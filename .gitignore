@@ -2,4 +2,7 @@
 .pytest_cache/
 .env.*
 .env
-*/__pycache__
+.coverage
+.vscode/
+**/__pycache__/**
+setup.cfg

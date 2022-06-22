@@ -25,7 +25,7 @@ ENV PYTHONUNBUFFERED 1
 # Install python libraries.
 RUN pip install --upgrade pip
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --no-cache -r requirements.txt
 
 # Copy and define workdir.
 COPY app/ /opt/django/app/
