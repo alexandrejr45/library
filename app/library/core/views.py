@@ -61,7 +61,17 @@ class BookView(viewsets.ViewSet):
             raise e
 
     def update(self, request, pk=None):
-        pass
+        try:
+            if pk:
+                book = get_object_or_404(Book, isbn=pk)
+                serializer = BookSerializer(book, data=request.data)
+                if serializer.is_valid(raise_exception=True):
+                    return Response(
+                        serializer.data,
+                        status=status.HTTP_200_OK
+                    )
+        except Exception as e:
+            raise e
 
     def destroy(self, request, pk=None):
         pass
