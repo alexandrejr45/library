@@ -1,22 +1,14 @@
-version: '2.2'
-
 services:
-  app_prod:
+  database:
+    ports:
+      - "6000:5432"
+    env_file:
+      - ./.env.db
+  app:
     command: python manage.py runserver 0.0.0.0:9000
-    extends:
-     service: app
-     file: docker-compose.yml
     ports:
       - "9000:9000"
     env_file:
       - ./.env
-  database_prod:
-    extends:
-      service: database
-      file: docker-compose.yml
-    ports:
-     - "6000:5432"
-    env_file:
-      - ./.env.db
 volumes:
   postgres_data:
