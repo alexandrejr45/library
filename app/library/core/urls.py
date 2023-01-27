@@ -6,10 +6,10 @@ from library.core import views
 
 
 router = DefaultRouter()
-router.register(r'authors', views.AuthorView, basename='authors')
 router.register(r'books', views.BookView, basename='books')
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('authors/', views.AuthorView.as_view()),
     path('get-token/', obtain_auth_token)
 ]

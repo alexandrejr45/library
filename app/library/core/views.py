@@ -3,33 +3,38 @@ from django.shortcuts import get_object_or_404
 from rest_framework import viewsets, mixins, permissions, status
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
+from rest_framework import generics
+
 
 from library.core.models import Author, Book
 from library.core.serializers import AuthorSerializer, BookSerializer
 
 
 class AuthorView(
+    mixins.ListModelMixin,
     mixins.CreateModelMixin,
     mixins.RetrieveModelMixin,
     mixins.UpdateModelMixin,
     mixins.DestroyModelMixin,
-    viewsets.GenericViewSet
+    generics.GenericAPIView
 ):
-    serializer_class = AuthorSerializer
     queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    def create(self, request, *args, **kwargs):
-        return super(AuthorView, self).create(request)
+    def get(self, request, *args, **kwargs):
+       return self.list(request, *args, **kwargs)
+    def get_author(self, request, *args, **kwargs):
+       return self.update(request, *args, **kwargs)
 
-    def retrieve(self, request, *args, **kwargs):
-        return super(AuthorView, self).retrieve(request)
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
 
-    def destroy(self, request, *args, **kwargs):
-        return super(AuthorView, self).destroy(request)
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
 
-    def update(self, request, *args, **kwargs):
-        return super(AuthorView, self).update(request)
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
 
 
 class BookView(viewsets.ViewSet):
