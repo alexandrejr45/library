@@ -15,7 +15,7 @@ class TestAuthor:
         assert Author.objects.get(name='Mido').last_name == 'Sore'
 
     def test_should_raise_error_when_author_has_invalid_name(self):
-        with(pytest.raises(DataError)):
+        with (pytest.raises(DataError)):
             Author.objects.create(
                 name=(
                     'Lorem ipsum dolor sit amet, consectetur adipiscing'
@@ -27,7 +27,7 @@ class TestAuthor:
             )
 
     def test_should_raise_error_when_author_has_invalid_last_name(self):
-        with(pytest.raises(DataError)):
+        with (pytest.raises(DataError)):
             Author.objects.create(
                 name='Shirazs',
                 last_name=(
@@ -35,9 +35,9 @@ class TestAuthor:
                     'elit. Sed id molestie dolor. Sed placerat sagittis mi,'
                     'lobortis rutrum augue bibendum ac. Nulla ac fermentum'
                     'urna. Nulla sed turpis ultricies, sollicitudin mi eu,'
-                'convallis ante. Proin ullamcorper enim eu est cras.'
+                    'convallis ante. Proin ullamcorper enim eu est cras.'
+                )
             )
-        )
 
     def test_should_create_author_without_last_name(self):
         Author.objects.create(name='Promoter')
@@ -68,7 +68,7 @@ class TestBook:
         self,
         author_model
     ):
-        with(pytest.raises(IntegrityError)):
+        with (pytest.raises(IntegrityError)):
             author = author_model
             book = Book.objects.create(
                 name='Beasts',

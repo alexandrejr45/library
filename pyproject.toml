@@ -40,6 +40,7 @@ tomli = "^2.0.1"
 uritemplate = "^4.1.1"
 urllib3 = "1.26.9"
 gunicorn = "^20.1.0"
+flake8 = "^6.0.0"
 
 [tool.pytest]
 DJANGO_SETTINGS_MODULE = "library.settings.dev"

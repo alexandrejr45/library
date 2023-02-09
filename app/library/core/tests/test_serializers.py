@@ -42,6 +42,6 @@ class TestBookSerializer:
         self,
         book_payload_invalid,
     ):
-        with(pytest.raises(ValidationError)):
+        with (pytest.raises(ValidationError)):
             book_serializer = BookSerializer(data=book_payload_invalid)
             book_serializer.is_valid(raise_exception=True)
