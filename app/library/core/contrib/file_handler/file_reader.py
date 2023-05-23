@@ -3,7 +3,6 @@ from typing import Any
 
 class FileReader:
 
-
     def read_file(self, path: str) -> Any:
         csv_file = []
 
@@ -14,3 +13,6 @@ class FileReader:
                 csv_file.append(row)
 
         return csv_file
+
+    def read_file(self) -> Any:
+        pass

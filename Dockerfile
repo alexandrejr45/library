@@ -1,4 +1,4 @@
-FROM python:3.10-slim as python-base
+FROM python:3.10 as python-base
 
 # Upgrade system.
 RUN apt-get -y update
